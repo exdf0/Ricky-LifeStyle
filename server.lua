@@ -1,27 +1,27 @@
-local ESX = exports.es_extended:getSharedObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterServerEvent('ricky-server:lifeStyleChoose')
 AddEventHandler('ricky-server:lifeStyleChoose', function(id, item)
   local src = source
-  local xPlayer = ESX.GetPlayerFromId(src)
+  local xPlayer =  QBCore.Functions.GetPlayer(src)
 
   for k,v in pairs(item) do 
-    xPlayer.addInventoryItem(v.name, v.quantity)
+    xPlayer.Functions.AddItem(v.name, v.quantity)
   end
 
 
-    MySQL.Sync.execute("UPDATE users SET lifeStyle = @lifeStyle WHERE identifier = @identifier", {
-        ['@identifier'] = xPlayer.identifier,
+    MySQL.Sync.execute("UPDATE players SET lifeStyle = @lifeStyle WHERE citizenid = @citizenid", {
+        ['@citizenid'] = xPlayer.PlayerData.citizenid,
         ['@lifeStyle'] = id
     })
 end)
 
 GetLifeStyle = function(source)
-  local xPlayer = ESX.GetPlayerFromId(source)
+  local xPlayer = QBCore.Functions.GetPlayer(src)
   if xPlayer == nil then return end 
 
-  local result = MySQL.Sync.fetchAll("SELECT lifeStyle FROM users WHERE identifier = @identifier", {
-    ['@identifier'] = xPlayer.identifier
+  local result = MySQL.Sync.fetchAll("SELECT lifeStyle FROM players WHERE citizenid = @citizenid", {
+    ['@citizenid'] = xPlayer.PlayerData.citizenid
   })
 
   if result[1] ~= nil then 
@@ -33,7 +33,7 @@ end
 
 exports('GetLifeStyle', GetLifeStyle)
 
-ESX.RegisterServerCallback('ricky-server:getLifeStyle', function(source, cb, id)
+QBCore.Functions.CreateCallback('ricky-server:getLifeStyle', function(source, cb, id)
   if id == nil then 
     id = source 
   end
