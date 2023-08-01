@@ -14,3 +14,5 @@ Server Side : TriggerClientEvent('ricky-client:openLifeStyle', playerId)
 # Get Life Style Selected
 Client Side : exports['Ricky-LifeStyle']:GetLifeStyle()<br>
 Server Side : exports['Ricky-LifeStyle']:GetLifeStyle(playerId)
+
+you can open the ui with "lifestyle" chat command
