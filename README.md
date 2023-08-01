@@ -1,8 +1,8 @@
 # Ricky-LifeStyle for QB-Core
 Advanced Life Style | FiveM
 
-# Discord
-https://discord.gg/tHAbhd94vS
+# Discord[
+https://discord.gg/tHAbhd94vS](https://discord.gg/5FuJEZXmYd)
 
 # Screenshot
 ![Alt text](https://cdn.discordapp.com/attachments/1125054086614634496/1130069136047874098/preview_lifestyle.png)
