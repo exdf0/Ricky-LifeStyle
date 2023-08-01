@@ -1,4 +1,4 @@
-# Ricky-LifeStyle
+# Ricky-LifeStyle for QB-Core
 Advanced Life Style | FiveM
 
 # Discord
