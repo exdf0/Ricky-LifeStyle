@@ -1,4 +1,4 @@
-local ESX = exports.es_extended:getSharedObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
 
 postMessage = function(data)
@@ -8,7 +8,7 @@ end
 
 GetLifeStyle = function()
     local life1 = nil 
-    ESX.TriggerServerCallback('ricky-server:getLifeStyle', function(life) 
+    QBCore.Functions.TriggerCallback('ricky-server:getLifeStyle', function(life) 
         life1 = life
     end)
     while life1 == nil do
@@ -50,3 +50,7 @@ RegisterNetEvent('ricky-client:openLifeStyle')
 AddEventHandler('ricky-client:openLifeStyle', function()
     OpenStyleMenu()
 end)
+RegisterCommand('lifestyle', function()
+	 TriggerEvent('ricky-client:openLifeStyle')
+end)
+
